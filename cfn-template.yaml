@@ -33,6 +33,7 @@ Resources:
       TargetType: instance
       port: 80
       Protocol: HTTP
+      VpcId: !GetAtt WebServersSecGroup.VpcId
   ALB:
     Type: "AWS::ElasticLoadBalancingV2::LoadBalancer"
     Properties:
@@ -76,8 +77,7 @@ Resources:
             #! /bin/bash
               yum update -y
               yum install httpd -y
-              #TOKEN="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-              FOLDER="https://$TOKEN@"
+              FOLDER="https://https://github.com/Abdallah-Aleies/kitten-carousel/blob/master/cfn-template.yaml"
               curl -s --create-dirs -o "/var/www/html/index.html" -L "$FOLDER"index.html
               curl -s --create-dirs -o "/var/www/html/cat0.jpg" -L "$FOLDER"cat0.jpg
               curl -s --create-dirs -o "/var/www/html/cat1.jpg" -L "$FOLDER"cat1.jpg
